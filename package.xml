@@ -12,8 +12,10 @@
 
     <depend>legged_rl_controllers</depend>
     <depend>rosbag2-storage-mcap</depend>
+    <depend>pluginlib</depend>
 
     <export>
         <build_type>ament_cmake</build_type>
     </export>
 </package>
+

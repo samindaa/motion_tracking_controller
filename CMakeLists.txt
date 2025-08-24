@@ -8,6 +8,8 @@ ament_auto_find_build_dependencies()
 
 
 find_package(Eigen3 REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(legged_rl_controllers REQUIRED)
 
 ament_auto_add_library(
     ${PROJECT_NAME}
@@ -23,6 +25,11 @@ target_include_directories(
     ${PROJECT_NAME} PUBLIC ${EIGEN3_INCLUDE_DIRS})
 
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
+
+ament_target_dependencies(
+  ${PROJECT_NAME}
+  pluginlib
+  legged_rl_controllers)
 
 ament_auto_package(
     INSTALL_TO_SHARE config launch
