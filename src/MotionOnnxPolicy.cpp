@@ -42,9 +42,27 @@ vector_t MotionOnnxPolicy::forward(const vector_t& observations) {
 
 void MotionOnnxPolicy::parseMetadata() {
   OnnxPolicy::parseMetadata();
-  anchorBodyName_ = getMetadataStr("anchor_body_name");
+  // anchorBodyName_ = getMetadataStr("anchor_body_name");
+  anchorBodyName_ = "torso_link";
   std::cout << '\t' << "anchor_body_name: " << anchorBodyName_ << '\n';
-  bodyNames_ = parseCsv<std::string>(getMetadataStr("body_names"));
+  // bodyNames_ = parseCsv<std::string>(getMetadataStr("body_names"));
+  bodyNames_ = {
+            "pelvis",
+            "left_hip_roll_link",
+            "left_knee_link",
+            "left_ankle_roll_link",
+            "right_hip_roll_link",
+            "right_knee_link",
+            "right_ankle_roll_link",
+            "torso_link",
+            "left_shoulder_roll_link",
+            "left_elbow_link",
+            "left_wrist_yaw_link",
+            "right_shoulder_roll_link",
+            "right_elbow_link",
+            "right_wrist_yaw_link",
+  };
+  
   std::cout << '\t' << "body_names: " << bodyNames_ << '\n';
 }
 }  // namespace legged
